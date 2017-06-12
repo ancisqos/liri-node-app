@@ -1,23 +1,39 @@
-const fs = require('fs')
+console.log("LIRI Bot is ready to go.");
 
-const keysfile = 'keys.js'
-
+const fs = require('fs');
+var Twitter = require('twitterKeys');
+var Spotify = require('spotify');
+const keys = require('./keys.js');
+var twit = new Twitter(keys);
 var command = process.agrv[2]
-var API = //contains data from twitter api call
+var parameters = {
+	'screen_name': 'hajibdajaj',
+	'count': 20
+}
 
+//code for Twitter 'my-tweets' Command
 if (command === 'my-tweets') {
+	twit.get('statuses/user_timeline', parameters, gotData);
+	function gotData(error, data, response){
+		var tweets = data;
+		for (var i = 0; i < tweets.length; i++){
+			console.log(tweets[i].text);
+			console.log(tweets[i].created_at);
+		}
+	}
+}
+
+//code for Spotify 'spotify this song' Command
+else if (command === 'spotify-this-song') {
 	console.log()
 }
 
-fs.readFile(keysfile, 'utf8', function(err, fileContents){
-	if (err) {
-		return console.error(err)
-	}
+//code for Movie 'movie-this' Command
+else if (command === 'movie-this') {
+	console.log()
+}
 
-	var twitterKeys = fileContents.split(',');
-
-	for (var i = o; i < twitterKeys.length; i++) {
-
-		console.log(twitterKeys[i]);
-	}
-})
+//code for 'do-what-it-says' Command
+else if (command === 'do-what-it-says') {
+	console.log()
+}
