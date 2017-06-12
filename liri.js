@@ -1,8 +1,8 @@
 console.log("LIRI Bot is ready to go.");
 
 const fs = require('fs');
-var Twitter = require('twitterKeys');
-var Spotify = require('spotify');
+var Twitter = require('twitter');
+var spotify = require('spotify');
 const keys = require('./keys.js');
 var twit = new Twitter(keys);
 var command = process.agrv[2]
@@ -25,6 +25,15 @@ if (command === 'my-tweets') {
 
 //code for Spotify 'spotify this song' Command
 else if (command === 'spotify-this-song') {
+ 
+	spotify.search({ type: 'track', query: 'dancing in the moonlight' }, function(err, data) {
+    if ( err ) {
+        console.log('Error occurred: ' + err);
+        return;
+    }
+ 
+    // Do something with 'data' 
+});
 	console.log()
 }
 
