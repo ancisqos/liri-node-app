@@ -6,6 +6,7 @@ var fs = require('fs');
 var Twitter = require('twitter');
 var keys = require('./keys.js');
 var omdb = require('omdb');
+var request = require('request');
 
 // TESTING TO MAKE SURE KEYS IS IMPORTED SUCCESSFULLY
 console.log(keys)
@@ -59,28 +60,29 @@ if (command === 'movie-this') {
                     console.log("Rotten Tomatoes Rating: " + JSON.parse(body)["tomatoRating"]);
                     console.log("Rotten Tomatoes URL: " + JSON.parse(body)["tomatoURL"]);
                 }
+            });
 
-                // CONDITIONAL STATEMENT TO RUN SPOTIFY PACKAGE ---Not Working
+// // CONDITIONAL STATEMENT TO RUN SPOTIFY PACKAGE ---Not Working
 
-                if (command === spotify - this - song) {
-                    console.log('Time to bump some jamz.');
+// if (command === spotify - this - song) {
+//     console.log('Time to bump some jamz.');
 
-                    var searchTrack;
-                    if (secondCommand === undefined) {
-                        searchTrack = "The Sign";
-                    } else {
-                        searchTrack = secondCommand;
-                    }
+//     var searchTrack;
+//     if (secondCommand === undefined) {
+//         searchTrack = "The Sign";
+//     } else {
+//         searchTrack = secondCommand;
+//     }
 
-                    spotify.search({ type: 'track', query: searchTrack }, function(err, data) {
-                        if (err) {
-                            console.log('Error occurred: ' + err);
-                            return;
-                        } else {
-                            console.log("Artist: " + data.tracks.items[0].artists[0].name);
-                            console.log("Song: " + data.tracks.items[0].name);
-                            console.log("Album: " + data.tracks.items[0].album.name);
-                            console.log("Preview Here: " + data.tracks.items[0].preview_url);
-                        }
-                    });
-                };
+//     spotify.search({ type: 'track', query: searchTrack }, function(err, data) {
+//         if (err) {
+//             console.log('Error occurred: ' + err);
+//             return;
+//         } else {
+//             console.log("Artist: " + data.tracks.items[0].artists[0].name);
+//             console.log("Song: " + data.tracks.items[0].name);
+//             console.log("Album: " + data.tracks.items[0].album.name);
+//             console.log("Preview Here: " + data.tracks.items[0].preview_url);
+//         }
+//     });
+// };
