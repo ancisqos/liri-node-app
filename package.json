@@ -1,0 +1,23 @@
+{
+  "name": "liri-node-app",
+  "version": "1.0.0",
+  "description": "The Best Damn Liri Node App in the Galaxy",
+  "main": "keys.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ancisqos/liri-node-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ancisqos/liri-node-app/issues"
+  },
+  "homepage": "https://github.com/ancisqos/liri-node-app#readme",
+  "dependencies": {
+    "omdb": "^0.8.0",
+    "twitter": "^1.7.1"
+  }
+}
