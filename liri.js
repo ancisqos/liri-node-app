@@ -41,10 +41,7 @@ if (command === 'my-tweets') {
             console.log(tweets[i].created_at);
         }
     }
-};
-
-// CONDITIONAL STATEMENT TO RUN OMDB NPM PACKAGE ---Not Working
-if (command === 'movie-this') {
+} else if (command === 'movie-this') {
     console.log('Netflix and chill?');
     var movieName = process.argv.slice(3).join(" ");
     console.log(movieName);
