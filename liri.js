@@ -9,7 +9,7 @@ var omdb = require('omdb');
 var request = require('request');
 
 // TESTING TO MAKE SURE KEYS IS IMPORTED SUCCESSFULLY
-console.log(keys)
+//console.log(keys)
 
 // TESTING COMMAND
 var command = process.argv[2]
@@ -46,21 +46,25 @@ if (command === 'my-tweets') {
 // CONDITIONAL STATEMENT TO RUN OMDB NPM PACKAGE ---Not Working
 if (command === 'movie-this') {
     console.log('Netflix and chill?');
-    var movieTitle = process.argv[3];
-    var url = "http://www.omdbapi.com/?i=tt3896198&apikey=40e9cece" + movieTitle + "&y=&plot=short&r=json&tomatoes=true";
-    request(url, function(error, response, body) {
-                if (!error && response.statusCode == 200) {
-                    console.log("Title: " + JSON.parse(body)["Title"]);
-                    console.log("Year: " + JSON.parse(body)["Year"]);
-                    console.log("IMDB Rating: " + JSON.parse(body)["imdbRating"]);
-                    console.log("Country: " + JSON.parse(body)["Country"]);
-                    console.log("Language: " + JSON.parse(body)["Language"]);
-                    console.log("Plot: " + JSON.parse(body)["Plot"]);
-                    console.log("Actors: " + JSON.parse(body)["Actors"]);
-                    console.log("Rotten Tomatoes Rating: " + JSON.parse(body)["tomatoRating"]);
-                    console.log("Rotten Tomatoes URL: " + JSON.parse(body)["tomatoURL"]);
+    var movieName = process.argv.slice(3).join(" ");
+    console.log(movieName);
+    var queryUrl = "http://www.omdbapi.com/?i=tt3896198&apikey=40e9cece" + movieName + "&y=&plot=short&r=json&tomatoes=true";
+    console.log(queryUrl)
+    request(queryUrl, function(error, response, body) {
+          if (!error && response.statusCode == 200) {
+        var responseJson = JSON.parse(body);
+                    console.log("Title: " + responseJson.Title);
+                    console.log("Year: " + responseJson.Year);
+                    console.log("IMDB Rating: " + responseJson.imdbRating);
+                    console.log("Country: " + responseJson.Country);
+                    console.log("Language: " + responseJson.Language);
+                    console.log("Plot: " + responseJson.Plot);
+                    console.log("Actors: " + responseJson.Actors);
+                    console.log("Rotten Tomatoes Rating: " + responseJson.tomatoRating);
+                    console.log("Rotten Tomatoes URL: " + responseJson.tomatoURL);
                 }
             });
+}
 
 // // CONDITIONAL STATEMENT TO RUN SPOTIFY PACKAGE ---Not Working
 
