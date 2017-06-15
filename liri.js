@@ -1,5 +1,5 @@
 // TESTING FILE
-console.log("LIRI Bot is ready to go.");
+console.log("LIRI Bot is ready to change yo life.");
 
 // REQUIRING PROJECT DEPENDENCIES
 var fs = require('fs');
@@ -23,6 +23,7 @@ var client = new Twitter({
     access_token_secret: keys.access_token_secret
 });
 
+
 // PARAMETERS USED TO ACCESS TWITTER ACCOUNT INFO
 var parameters = {
     'screen_name': 'hajibdajaj',
@@ -40,12 +41,17 @@ if (command === 'my-tweets') {
             console.log(tweets[i].text);
             console.log(tweets[i].created_at);
         }
-    }
-} else if (command === 'movie-this') {
+    };
+}; 
+logText();
+
+
+// CONDITIONAL STATEMENT TO RUN MOVIE NPM PACKAGE ---Working
+if (command === 'movie-this') {
     console.log('Netflix and chill?');
     var movieName = process.argv.slice(3).join(" ");
     console.log(movieName);
-    var queryUrl = "http://www.omdbapi.com/?i=tt3896198&apikey=40e9cece" + movieName + "&y=&plot=short&r=json&tomatoes=true";
+    var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=40e9cece";
     console.log(queryUrl)
     request(queryUrl, function(error, response, body) {
           if (!error && response.statusCode == 200) {
@@ -54,14 +60,23 @@ if (command === 'my-tweets') {
                     console.log("Year: " + responseJson.Year);
                     console.log("IMDB Rating: " + responseJson.imdbRating);
                     console.log("Country: " + responseJson.Country);
-                    console.log("Language: " + responseJson.Language);
+                    console.log("Language: " + responseJson.Language);"http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=40e9cece"
                     console.log("Plot: " + responseJson.Plot);
                     console.log("Actors: " + responseJson.Actors);
-                    console.log("Rotten Tomatoes Rating: " + responseJson.tomatoRating);
-                    console.log("Rotten Tomatoes URL: " + responseJson.tomatoURL);
+                    console.log("Rotten Tomatoes URL: " + responseJson.RottenTomatoURL);
                 }
-            });
-}
+            })
+};
+logText();
+
+        //// Tried to write if/else statement that would get data for Mr. Nobody if user doesn't write a movie in but all the {} and () keep messing me up and breaking the whole thing so I commented this out.
+        // if (process.argv.slice(3).join(" ")) {
+        //     console.log(body);
+        // } else {
+        //      request("http://www.omdbapi.com/?t=mr+nobody+&y=&plot=short&r=json&tomatoes=true",function(error, response,body){
+        //         console.log(body);
+        //     });
+        
 
 // // CONDITIONAL STATEMENT TO RUN SPOTIFY PACKAGE ---Not Working
 
@@ -87,3 +102,12 @@ if (command === 'my-tweets') {
 //         }
 //     });
 // };
+
+// CONDITIONAL STATEMENT TO RUN DO WHAT IT SAYS NPM PACKAGE ---Working
+// if(argument === "do-what-it-says"){
+//     fs.readFile('random.txt', "utf8", function(err, data){
+//         console.log(data);
+
+function logText () { //i don't know why it runs Movie Title twice: first undefined, then logs.
+    fs.appendFile('log.txt', 'Argument: ' + command + '. Movie Title:' +  movieName + '.')
+}
