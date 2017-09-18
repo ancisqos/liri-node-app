@@ -1,5 +1,5 @@
 // TESTING FILE
-console.log("LIRI Bot is ready to change yo life.");
+console.log("LIRI Bot is ready to change your life.");
 
 // REQUIRING PROJECT DEPENDENCIES
 var fs = require('fs');
@@ -23,7 +23,6 @@ var client = new Twitter({
     access_token_secret: keys.access_token_secret
 });
 
-
 // PARAMETERS USED TO ACCESS TWITTER ACCOUNT INFO
 var parameters = {
     'screen_name': 'hajibdajaj',
@@ -32,7 +31,7 @@ var parameters = {
 
 // CONDITIONAL STATEMENT TO RUN TWITTER NPM PACKAGE ---Working
 if (command === 'my-tweets') {
-    console.log('Tweetz comin yo way');
+    console.log('Tweetz comin your way');
     client.get('statuses/user_timeline', parameters, gotData);
 
     function gotData(error, data, response) {
@@ -44,7 +43,6 @@ if (command === 'my-tweets') {
     };
 }; 
 logText();
-
 
 // CONDITIONAL STATEMENT TO RUN MOVIE NPM PACKAGE ---Working
 if (command === 'movie-this') {
@@ -69,16 +67,9 @@ if (command === 'movie-this') {
 };
 logText();
 
-        //// Tried to write if/else statement that would get data for Mr. Nobody if user doesn't write a movie in but all the {} and () keep messing me up and breaking the whole thing so I commented this out.
-        // if (process.argv.slice(3).join(" ")) {
-        //     console.log(body);
-        // } else {
-        //      request("http://www.omdbapi.com/?t=mr+nobody+&y=&plot=short&r=json&tomatoes=true",function(error, response,body){
-        //         console.log(body);
-        //     });
-        
+// the following code no longer works due to changes in Spotify's API policy
 
-// // CONDITIONAL STATEMENT TO RUN SPOTIFY PACKAGE ---Not Working
+// CONDITIONAL STATEMENT TO RUN SPOTIFY PACKAGE ---Not Working, issues with Spotify API
 
 // if (command === spotify - this - song) {
 //     console.log('Time to bump some jamz.');
@@ -103,11 +94,11 @@ logText();
 //     });
 // };
 
-// CONDITIONAL STATEMENT TO RUN DO WHAT IT SAYS NPM PACKAGE ---Working
+// CONDITIONAL STATEMENT TO RUN DO WHAT IT SAYS NPM PACKAGE ---requires Spotify, so doesn't work.
 // if(argument === "do-what-it-says"){
 //     fs.readFile('random.txt', "utf8", function(err, data){
 //         console.log(data);
 
-function logText () { //i don't know why it runs Movie Title twice: first undefined, then logs.
+function logText () {
     fs.appendFile('log.txt', 'Argument: ' + command + '. Movie Title:' +  movieName + '.')
 }
