@@ -20,7 +20,7 @@ LIRI (Language Interpretation and Recognition Interface) is a command line appli
 
 	<img src="/img/pic2.PNG" alt=sql-1>
 
-5. 'movie-this' uses the OMDB api to pull movie information based on certain parameters. We will be searching by movie name.
+5. 'movie-this' uses the OMDB API to pull movie information based on certain parameters. We will be searching by movie name.
 
 6. Run 'nodemon liri.js movie-this NAME OF MOVIE' and it will show you information about the movie.
 
